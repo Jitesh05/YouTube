@@ -1,0 +1,15 @@
+main ->
+calls function recreate_stg_tables() -> drops and creates the staging table fo every run,
+expects a list of channel ids to be provided manually,
+creates youtube object to get the data from  v3 api,
+
+iterates through the channel ids and calls the below three functions
+- get_channel_stats_by_id -> accepts channel_id and youtube object and returns the raw response to the main funcation
+- clean_channel_stats -> accepts the raw api response, extracts the required fields and returs a list with all the field values
+- insert_into_staging -> accepts the list having channel attributes and cursor object to insert into the stagin table.
+
+closes the connection to the databse
+
+
+
+
