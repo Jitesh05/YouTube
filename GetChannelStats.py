@@ -2,9 +2,11 @@ import json
 from FlattenJSON import flatten_json
 from pandas import json_normalize
 
+
 def get_channel_stats_by_id(youtube, channel_id):
     request = youtube.channels().list(part="snippet, statistics", id=channel_id)
     response = request.execute()
+    print(type(response))
     return response
 
 
@@ -18,4 +20,3 @@ def clean_channel_stats(self):
     videos = channel_stats['videoCount']
 
     return [channel_id, channel_name, channel_country, views, subscribers, videos]
-
